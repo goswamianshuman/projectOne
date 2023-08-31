@@ -1,32 +1,28 @@
-import React,  {useState} from 'react'
-import '../../App.css'  
-import '../Login'
+import React, { useState } from "react";
 
-function Signup() { 
+function Signup(props) {
+  const [data, setData] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+    cnf_password: "",
+  });
 
-    const [data, setData] = useState({
-        fullname:'',
-        email:'',
-        password:'',
-        cnf_password:''
-        
-    });   
+  const formSubmit = (e) => {
+    e.preventDefault();
+    alert("you have created account succesfully");
+    console.log(data);
+  };
 
-    //setData not defined please define it
-    
-
-    const formSubmit =() => {};
-
-    
-    return(
-        <div className="sign-up">
-            <div className="my-5">
-        <h1 className="text-center"> Sign-up</h1>
+  return (
+    <>
+      <div className="my-5">
+        <h1 className="text-center">Sign-up</h1>
       </div>
       <div className="container contact_div">
-        <div className="row"> 
+        <div className="row">
           <div className="col-md-6 col-10 mx-auto">
-           <form onSubmit={formSubmit}></form>
+            <form onSubmit={formSubmit}></form>
             <form>
               <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">
@@ -35,10 +31,10 @@ function Signup() {
                 <input
                   type="email"
                   className="form-control"
-                  id="exampleFormControlInput1" 
+                  id="exampleFormControlInput1"
                   name=""
                   value={data.fullname}
-                  onChange={InputEvent}
+                  onChange={(e) => setData({ fullname: e.target.value })}
                   placeholder="Enter your Name"
                 />
               </div>
@@ -50,8 +46,9 @@ function Signup() {
                   type="email"
                   className="form-control"
                   id="exampleFormControlInput1"
-                  name="" 
+                  name=""
                   value={data.email}
+                  onChange={(e) => setData({ email: e.target.value })}
                   placeholder="email address"
                 />
               </div>
@@ -65,13 +62,13 @@ function Signup() {
                   id="exampleFormControlInput1"
                   name=""
                   value={data.password}
-                  onChange={InputEvent}
+                  onChange={(e) => setData({ password: e.target.value })}
                   placeholder="Password"
                 />
               </div>
               <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">
-                  Email address
+                  Confirm Password
                 </label>
                 <input
                   type="email"
@@ -79,7 +76,7 @@ function Signup() {
                   id="exampleFormControlInput1"
                   name=""
                   value={data.cnf_password}
-                  onChange={InputEvent}
+                  onChange={(e) => setData({ cnf_password: e.target.value })}
                   placeholder="Conform Password"
                 />
               </div>
@@ -88,14 +85,14 @@ function Signup() {
                 type="submit"
                 className="btn btn-outline btn-success mb-3"
               >
-                Confirm 
+                Confirm
               </button>
             </form>
           </div>
         </div>
       </div>
-        </div>
-    )
-} 
+    </>
+  );
+}
 
-export default Signup
+export default Signup;
