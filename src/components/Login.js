@@ -1,26 +1,28 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-function Login( props ) {  
-    const [data, setData] = useState({
-        fullname:'',
-        email:'',
-        password:'',
-        cnf_password:''
-        
-    });  
-
-
-    const formSubmit =() => {};
+function Login(props) {
+  const [data, setData] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+    cnf_password: "",
+  });
+  
+  const formSubmit = (e) => {
+    e.preventDefault();
+    alert("you have created account succesfully");
+    console.log(data);
+  };
 
   return (
     <>
       <div className="my-5">
-        <h1 className="text-center"> Sign-up</h1>
+        <h1 className="text-center">Sign-up</h1>
       </div>
       <div className="container contact_div">
-        <div className="row"> 
+        <div className="row">
           <div className="col-md-6 col-10 mx-auto">
-           <form onSubmit={formSubmit}></form>
+            <form onSubmit={formSubmit}></form>
             <form>
               <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">
@@ -29,10 +31,10 @@ function Login( props ) {
                 <input
                   type="email"
                   className="form-control"
-                  id="exampleFormControlInput1" 
+                  id="exampleFormControlInput1"
                   name=""
                   value={data.fullname}
-                  onChange={InputEvent}
+                  onChange={(e) => setData({ fullname: e.target.value })}
                   placeholder="Enter your Name"
                 />
               </div>
@@ -44,8 +46,9 @@ function Login( props ) {
                   type="email"
                   className="form-control"
                   id="exampleFormControlInput1"
-                  name="" 
+                  name=""
                   value={data.email}
+                  onChange={(e) => setData({ email: e.target.value })}
                   placeholder="email address"
                 />
               </div>
@@ -59,13 +62,13 @@ function Login( props ) {
                   id="exampleFormControlInput1"
                   name=""
                   value={data.password}
-                  onChange={InputEvent}
+                  onChange={(e) => setData({ password: e.target.value })}
                   placeholder="Password"
                 />
               </div>
               <div className="mb-3">
                 <label for="exampleFormControlInput1" className="form-label">
-                  Email address
+                  Confirm Password
                 </label>
                 <input
                   type="email"
@@ -73,7 +76,7 @@ function Login( props ) {
                   id="exampleFormControlInput1"
                   name=""
                   value={data.cnf_password}
-                  onChange={InputEvent}
+                  onChange={(e) => setData({ cnf_password: e.target.value })}
                   placeholder="Conform Password"
                 />
               </div>
@@ -82,7 +85,7 @@ function Login( props ) {
                 type="submit"
                 className="btn btn-outline btn-success mb-3"
               >
-                Confirm 
+                Confirm
               </button>
             </form>
           </div>
